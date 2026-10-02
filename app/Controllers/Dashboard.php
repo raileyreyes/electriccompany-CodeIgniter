@@ -15,6 +15,9 @@ class Dashboard extends BaseController
 
     public function index()
     {
+        if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
         $keyword = $this->request->getGet('search');
         $status  = $this->request->getGet('status');
         $type    = $this->request->getGet('type');
