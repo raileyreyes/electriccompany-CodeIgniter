@@ -115,8 +115,19 @@
         Edit Customer
     </a>
 
-</div>
+    <form action="<?= base_url('account/delete/' . $account['id']) ?>"
+              method="post"
+              onsubmit="return confirm('Are you sure you want to delete this customer?');">
 
+            <?= csrf_field() ?>
+
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+                Delete Customer
+            </button>
+
+        </form>
+</div>
     </div>
 </div>
 

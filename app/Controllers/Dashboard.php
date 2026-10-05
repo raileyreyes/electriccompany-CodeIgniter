@@ -120,4 +120,49 @@ class Dashboard extends BaseController
     ]);
 }
 
+    public function update($id)
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $account = $this->customerModel->find($id);
+
+    if (!$account) {
+        return redirect()->to('/dashboard');
+    }
+
+    $data = [
+        'account_number'  => $this->request->getPost('account_number'),
+        'customer_name'   => $this->request->getPost('customer_name'),
+        'address'         => $this->request->getPost('address'),
+        'phone'           => $this->request->getPost('phone'),
+        'email'           => $this->request->getPost('email'),
+        'meter_number'    => $this->request->getPost('meter_number'),
+        'connection_type' => $this->request->getPost('connection_type'),
+        'status'          => $this->request->getPost('status'),
+    ];
+
+    $this->customerModel->update($id, $data);
+
+    return redirect()->to('/account/' . $id);
+}
+
+    public function delete($id)
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $account = $this->customerModel->find($id);
+
+    if (!$account) {
+        return redirect()->to('/dashboard');
+    }
+
+    $this->customerModel->delete($id);
+
+    return redirect()->to('/dashboard');
+}
+
 }

@@ -27,3 +27,5 @@ $routes->get('/account/edit/(:num)', 'Dashboard::edit/$1');
 $routes->post('/account/update/(:num)', 'Dashboard::update/$1');
 
 
+$routes->post('/account/delete/(:num)', 'Dashboard::delete/$1');
+
