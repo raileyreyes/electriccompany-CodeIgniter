@@ -14,10 +14,14 @@ $routes->get('/register', 'Register::index');
 $routes->post('/register', 'Register::create');
 
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/dashboard/create', 'Dashboard::create');
+$routes->post('/dashboard/store', 'Dashboard::store');
 
 $routes->get('/login', 'Login::index');
 $routes->post('/login', 'Login::authenticate');
 $routes->get('/logout', 'Login::logout');
+
+$routes->get('/account/(:num)', 'Dashboard::show/$1');
 
 
 

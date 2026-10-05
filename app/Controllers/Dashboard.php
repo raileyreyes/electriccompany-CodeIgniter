@@ -18,6 +18,7 @@ class Dashboard extends BaseController
         if (!session()->get('logged_in')) {
         return redirect()->to('/login');
     }
+
         $keyword = $this->request->getGet('search');
         $status  = $this->request->getGet('status');
         $type    = $this->request->getGet('type');
@@ -53,4 +54,36 @@ class Dashboard extends BaseController
 
         return view('home/index', $data);
     }
+
+    public function create()
+    {
+        if (!session()->get('logged_in')) {
+            return redirect()->to('/login');
+        }
+
+        return view('home/create');
+    }
+
+    public function store()
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $data = [
+        'account_number'  => $this->request->getPost('account_number'),
+        'customer_name'   => $this->request->getPost('customer_name'),
+        'address'         => $this->request->getPost('address'),
+        'phone'           => $this->request->getPost('phone'),
+        'email'           => $this->request->getPost('email'),
+        'meter_number'    => $this->request->getPost('meter_number'),
+        'connection_type' => $this->request->getPost('connection_type'),
+        'status'          => $this->request->getPost('status'),
+    ];
+
+    $this->customerModel->insert($data);
+
+    return redirect()->to('/dashboard');
+}
+
 }

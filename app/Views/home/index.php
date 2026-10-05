@@ -140,6 +140,13 @@
                 <?php endif; ?>
             </div>
 
+
+            <div class="mb-3">
+                <a href="<?= base_url('dashboard/create') ?>" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Add Customer
+                 </a>
+            </div>
+
             <!-- Customer Accounts Table -->
             <div class="table-container">
                 <table class="table table-hover">
