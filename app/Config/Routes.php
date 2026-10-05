@@ -23,6 +23,7 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->get('/account/(:num)', 'Dashboard::show/$1');
 
-
+$routes->get('/account/edit/(:num)', 'Dashboard::edit/$1');
+$routes->post('/account/update/(:num)', 'Dashboard::update/$1');
 
 

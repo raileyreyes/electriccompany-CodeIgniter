@@ -86,4 +86,38 @@ class Dashboard extends BaseController
     return redirect()->to('/dashboard');
 }
 
+    public function show($id)
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $account = $this->customerModel->find($id);
+
+    if (!$account) {
+        return redirect()->to('/dashboard');
+    }
+
+    return view('home/show', [
+        'account' => $account
+    ]);
+}
+
+    public function edit($id)
+{
+    if (!session()->get('logged_in')) {
+        return redirect()->to('/login');
+    }
+
+    $account = $this->customerModel->find($id);
+
+    if (!$account) {
+        return redirect()->to('/dashboard');
+    }
+
+    return view('home/edit', [
+        'account' => $account
+    ]);
+}
+
 }
