@@ -77,6 +77,12 @@
                 <p class="text-muted">Customer Account Management System</p>
             </div>
 
+            <div class="d-flex justify-content-end mb-3">
+    <a href="<?= base_url('logout') ?>" class="btn btn-outline-danger">
+        <i class="bi bi-box-arrow-right"></i> Logout
+    </a>
+</div>
+
             <!-- Statistics Cards -->
             <div class="row mb-4">
                 <div class="col-md-3">

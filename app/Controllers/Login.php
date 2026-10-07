@@ -22,11 +22,8 @@ class Login extends BaseController
             ->where('username', $username)
             ->first();
 
-        $storedPassword = $user['password'] ?? '';
-        $passwordMatches = password_verify($password, $storedPassword)
-            || (is_string($storedPassword) && hash_equals($storedPassword, $password));
 
-        if ($user && $passwordMatches) {
+        if ($user && password_verify($password, $user['password'])) {
 
             session()->set([
                 'user_id'   => $user['id'],
