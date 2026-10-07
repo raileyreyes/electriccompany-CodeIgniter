@@ -113,7 +113,7 @@
 
             <!-- Search and Filter Section -->
             <div class="search-filter-section">
-                <form method="GET" action="<?= base_url() ?>">
+                <form method="GET" action="<?= base_url('dashboard') ?>">
                     <div class="row g-3">
                         <div class="col-md-4">
                             <input type="text" class="form-control" name="search" placeholder="Search by name, account, email, phone..." value="<?= esc($search_keyword ?? '') ?>">
@@ -141,7 +141,7 @@
                 </form>
                 <?php if ($search_keyword || $filter_status || $filter_type): ?>
                     <div class="mt-2">
-                        <a href="<?= base_url() ?>" class="btn btn-sm btn-secondary"><i class="bi bi-x-circle"></i> Clear Filters</a>
+                        <a href="<?= base_url('dashboard') ?>" class="btn btn-sm btn-secondary"><i class="bi bi-x-circle"></i> Clear Filters</a>
                     </div>
                 <?php endif; ?>
             </div>
